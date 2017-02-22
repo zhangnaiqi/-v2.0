@@ -1,0 +1,38 @@
+<view style="height:{{state.screenHeight}}px" wx:if ="{{state.story.trial_voice===undefined}}">
+  <image class="jiazai" src="/assets/loading.gif">
+  </image>
+</view>
+
+<view wx:else>
+  <view class="container">
+    <view class="border-red">
+      <image class="img-story" src="{{state.story.cover.source}}@345w_240h_1e_1c_90q"></image>
+      <swiper  wx:if="{{state.story.description !==''}}" class="swiper" interval="10000" circular="true" bindchange="121" indicator-dots>
+            <swiper-item wx:for="{{[1,2]}}">
+            <view wx:if="{{item===1}}">
+                <view class="story-name">{{state.story.title}}</view>
+                <view class="time">{{state.playTime}} / {{state.totalTime}}</view>
+                <view class="audio-view">
+                    <image wx:if="{{state.play}}" class="play" bindtap="audioPlay" src="./images/play.png" />
+                    <image wx:else class="play" bindtap="audioPause" src="./images/pause.png" />
+                </view>
+            </view>
+            <view wx:if="{{item===2}}">
+                <scroll-view scroll-y="true" class="description">{{state.story.description}}</scroll-view>
+            </view>
+            </swiper-item>
+        </swiper>
+        <view wx:else>
+            <view class="story-name">{{state.story.title}}</view>
+            <view class="time">{{state.playTime}} / {{state.totalTime}}</view>
+            <view class="audio-view">
+                <image wx:if="{{state.play}}" class="play" bindtap="audioPlay" src="./images/play.png" />
+                <image wx:else class="play" bindtap="audioPause" src="./images/pause.png" />
+            </view>
+        </view>
+      </view>
+      <view class="test-bot">
+          <test>鱼说故事，处处风景</test>
+      </view>
+    </view>
+</view>

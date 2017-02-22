@@ -1,0 +1,29 @@
+<view wx:if ="{{state.scenic.cover===undefined}}" style="height:{{state.height}}px">
+  <image class="jiazai" src="/assets/loading.gif"></image>
+</view>
+<scroll-view wx:else lower-threshold="50" scroll-top="{{state.scrollTop}}" bindscroll="scroll" scroll-y="true" style="height:{{state.height}}px;width:100%;" bindscrolltolower="loadMore">
+  <image class="img-scenic" src="{{state.scenic.cover.source}}@375w_240h_1e_1c_90q"></image>
+  <view class="story-list">
+    <view class="border-bot">
+      <view class="scenic-title">{{state.scenic.title}}</view>
+      <view wx:if ="{{state.scenic.description !==''}}">
+        <view class="scenic-description">{{state.scenic.description}}</view>
+        <!--<view class="scenic-description-zk">展开</view>-->
+      </view>
+    </view>
+    <view class="sub">{{state.storyNum}}个故事</view>
+    <view class="lists" bindtap="toStoryPage" wx:for="{{state.SceniceStory}}" data-id="{{item._id}}">
+      <view class="img-story" style="background-image:url({{item.cover.source}}@100w_100h)"></view>
+      <view style="margin-left:20rpx">
+        <view class="story-name">{{item.title}}</view>
+        <view class="user-name">by {{item.user.username}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="refresh-block" wx:if="{{state.loadingMore}}">
+    加载中……
+  </view>
+  <view wx:if="{{state.scrollTop>0}}" class="top" bindtap="toTop">
+    <image class="top-img" src="/assets/top.png"/>
+  </view>
+</scroll-view>

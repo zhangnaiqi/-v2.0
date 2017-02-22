@@ -1,0 +1,63 @@
+<view wx:if ="{{state.hotsearch[0]===undefined}}" style="height:{{state.height}}px">
+    <image class="jiazai" src="/assets/loading.gif"></image>
+</view>
+<view wx:else class="search">
+    <view class="search-input">
+        <icon wx:if="{{state.searchTitle===''}}" class="icon" type="search" size="16"/>
+        <input class="input" type="text" bindinput="inputValue" placeholder="搜搜你想听的沿途风景与故事" value={{state.searchTitle}}></input>
+    </view>
+    <view wx:if="{{state.searchTitle===''}}" class="hot">
+        <scroll-view lower-threshold="50" scroll-y="true" style="height:{{state.height}}px;width:100%;">
+            <view>
+                <view style="display:flex;">
+                    <test class="hot-search">搜索记录</test>
+                    <test wx:if="{{state.record[0]!==undefined}}" class="more"  bindtap="clear">清除</test>
+                </view>
+                <view wx:if="{{state.record[0]!==undefined}}">
+                    <view class="hotName" bindtap="hotSearch" data-searchName="{{item}}" wx:for="{{state.record}}">
+                        <test class="searchName" wx:if="{{item.searchName!=='鱼说总部'&&item.searchName!=='夏目友人帐'}}">{{item}}</test>
+                    </view>
+                </view>
+                <view class="wu" wx:else>暂无搜索记录</view>
+            </view>
+            <view wx:if="{{state.hot}}">
+                <view class="hot-search">
+                    <test>热门搜索</test>
+                </view>
+                <view class="hotName" bindtap="hotSearch" data-searchName="{{item.searchName}}" wx:for="{{state.hotsearch}}">
+                    <test class="searchName" wx:if="{{item.searchName!=='鱼说总部'&&item.searchName!=='夏目友人帐'}}">{{item.searchName}}</test>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view wx:else class="hot">
+        <view wx:if="{{state.scenics.items[0]===undefined&&state.story.items[0]===undefined}}">暂无内容</view>
+        <view wx:else>
+            <view wx:if="{{state.scenics.items[0].type ===1}}">
+                <view class="result-scenics">景区</view>
+                <view wx:for="{{state.scenics.items}}" data-id="{{item._id}}" bindtap="toSceniceSpots">
+                    <view class="lists" wx:if="{{item.type===1}}">
+                        <view class="tupian" style="background-image:url({{item.cover.source}}@70w_70h)"></view>
+                        <view class="itemName">
+                            <view class="itemTitle">
+                                <text>{{item.title}}</text>
+                                <image class="identifying" src="./jingqu.png" />
+                            </view>
+                            <view class="itemArea">{{item.area}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{state.story.items[0]!==undefined}}">
+                <view class="result--story">故事</view>
+                <view class="lists" wx:for="{{state.story.items}}" bindtap="toStory" data-id="{{item._id}}">
+                    <view class="tupian" style="background-image:url({{item.cover.source}}@70w_170h)"></view>
+                    <view class="itemName">
+                        <view class="itemTitle">{{item.title}}</view>
+                        <view class="itemArea">{{item.place}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

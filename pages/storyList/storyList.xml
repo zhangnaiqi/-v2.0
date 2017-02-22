@@ -1,0 +1,19 @@
+<view wx:if ="{{state.storyList[0]===undefined}}" style="height:{{state.height}}px">
+    <image class="jiazai" src="/assets/loading.gif"></image>
+</view>
+<view wx:else class="search">
+    <view>
+        <scroll-view lower-threshold="50" scroll-top="{{state.scrollTop}}" bindscroll="scroll" scroll-y="true" style="height:{{state.height}}px;width:100%;" bindscrolltolower="loadMore">
+            <view>
+                <view class="nearby-story" bindtap="toStory" data-id="{{item.id}}" wx:for="{{state.storyList}}">
+                    <image class="nearby-story-img" src="https://image-cdn.fishsaying.com/{{item.image ? item.image : 'img_default.jpg'}}@345w_130h_1e_1c_90q" />
+                    <view class="nearby-story-title">{{item.name}}</view>
+                </view>
+            </view>
+            <view wx:if="{{state.scrollTop>0}}" class="top" bindtap="toTop">
+                <image class="top-img" src="/assets/top.png"/>
+            </view>
+            <view class="refresh-block" wx:if="{{state.loadingMore}}">加载中…… </view>
+        </scroll-view>
+    </view>
+</view>

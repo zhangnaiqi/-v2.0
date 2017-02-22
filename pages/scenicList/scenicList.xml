@@ -1,0 +1,117 @@
+<view wx:if ="{{state.scenicList[0]===undefined}}" style="height:{{state.height}}px">
+    <image class="jiazai" src="/assets/loading.gif"></image>
+</view>
+<scroll-view wx:else lower-threshold="50" scroll-y="true" scroll-top="{{state.scrollTop}}" bindscroll="scroll" style="height:{{state.height}}px;width:100%;" bindscrolltolower="loadMore">
+    <view wx:if='{{state.scenicListNum===1}}' style="margin:0 10rpx;">
+        <view class="first-row margin-bottom-10">
+            <view class="rel v1-1" data-id="{{state.scenicList[0].id}}" bindtap="toSceniceSpots">
+                <image class="img1-1" src="https://image-cdn.fishsaying.com/{{state.scenicList[0].image ? state.scenicList[0].image : 'img_default.jpg'}}@365w_345h_1e_1c_90q" />
+                <image class="shade shade-width" src="./shade.png"/>
+                <text class="text">{{state.scenicList[0].name}}</text>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{state.scenicList===2}}" style="margin:0 8rpx;">
+        <view class="first-row margin-bottom-10">
+            <view class="rel v1-3" data-id="{{state.scenicList[0].id}}" bindtap="toSceniceSpots">
+                <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.scenicList[0].image ? state.scenicList[0].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                <image class="shade shade-width" src="./shade.png"/>
+                <text class="text">{{state.cityScenscenicListicList[0].name}}</text>
+            </view>
+            <view class="rel v1-3" data-id="{{state.scenicList[1].id}}" bindtap="toSceniceSpots">
+                <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.scenicList[1].image ? state.scenicList[1].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                <image class="shade shade-width" src="./shade.png"/>
+                <text class="text">{{state.scenicList[1].name}}</text>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{state.scenicListNum===3}}" style="margin:0 10rpx;">
+        <view class="first-row margin-bottom-10">
+            <view class="rel v1-3" data-id="{{state.scenicList[0].id}}" bindtap="toSceniceSpots">
+                <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.scenicList[0].image ? state.scenicList[0].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                <image class="shade shade-width" src="./shade.png"/>
+                <text class="text">{{state.scenicList[0].name}}</text>
+            </view>
+            <view class="right">
+                <view class="rel v2-3" data-id="{{state.scenicList[1].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r1-3" src="https://image-cdn.fishsaying.com/{{state.scenicList[1].image ? state.scenicList[1].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[1].name}}</text>
+                </view>
+                <view class="rel v3-3" data-id="{{state.scenicList[2].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r2-3" src="https://image-cdn.fishsaying.com/{{state.scenicList[2].image ? state.scenicList[2].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[2].name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{state.scenicListNum===4}}" style="margin:0 10rpx;">
+        <view class="first-row">
+            <view>
+                <view class="rel v2-3 margin-bottom-10" data-id="{{state.scenicList[1].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.scenicList[0].image ? state.scenicList[1].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[1].name}}</text>
+                </view>
+                <view class="rel v3-3" data-id="{{state.scenicList[2].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.scenicList[1].image ? state.scenicList[2].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[2].name}}</text>
+                </view>
+            </view>
+            <view>
+                <view class="rel v2-3  margin-bottom-10" data-id="{{state.scenicList[3].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.scenicList[2].image ? state.scenicList[3].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[3].name}}</text>
+                </view>
+                <view class="rel v3-3" data-id="{{state.scenicList[4].id}}" bindtap="toSceniceSpots">
+                    <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.scenicList[3].image ? state.scenicList[4].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{state.scenicList[4].name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else style="margin:0 10rpx;">
+        <view wx:for="{{state.scenicList}}">
+            <view class="first-row margin-bottom-10">
+                <view wx:if="{{item[0].id!==undefined}}" class="rel v1" data-id="{{item[0].id}}" bindtap="toSceniceSpots">
+                    <image class="img1" src="https://image-cdn.fishsaying.com/{{item[0].image ? item[0].image : 'img_default.jpg'}}@183w_225h_1e_1c_90q" />
+                    <image class="shade shade-width" src="./shade.png"/>
+                    <text class="text">{{item[0].name}}</text>
+                </view>
+                <view class="right">
+                    <view wx:if="{{item[1].id!==undefined}}" class="rel v2" data-id="{{item[1].id}}" bindtap="toSceniceSpots">
+                        <image class="img-top-r1" src="https://image-cdn.fishsaying.com/{{item[1].image ? item[1].image : 'img_default.jpg'}}@178w_110h_1e_1c_90q" />
+                        <image class="shade" src="./shade.png"/>
+                        <text class="text">{{item[1].name}}</text>
+                    </view>
+                    <view wx:if="{{item[2].id!==undefined}}" class="rel v3" data-id="{{item[2].id}}" bindtap="toSceniceSpots">
+                        <image class="img-top-r2" src="https://image-cdn.fishsaying.com/{{item[2].image ? item[2].image : 'img_default.jpg'}}@178w_110h_1e_1c_90q" />
+                        <image class="shade" src="./shade.png"/>
+                        <text class="text">{{item[2].name}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="second-row">
+                <view wx:if="{{item[3].id!==undefined}}" class="rel v4 margin-bottom-10" data-id="{{item[3].id}}" bindtap="toSceniceSpots">
+                    <image class="img-bot-l" src="https://image-cdn.fishsaying.com/{{item[3].image ? item[3].image : 'img_default.jpg'}}@235w_115h_1e_1c_90q" />
+                    <image class="shade shade-width" src="./shade.png"/>
+                    <text class="text">{{item[3].name}}</text>
+                </view>
+                <view wx:if="{{item[4].id!==undefined}}" class="rel v5 margin-bottom-10" data-id="{{item[4].id}}" bindtap="toSceniceSpots">
+                    <image class="img-bot-r" src="https://image-cdn.fishsaying.com/{{item[4].image ? item[4].image : 'img_default.jpg'}}@125w_115h_1e_1c_90q" />
+                    <image class="shade" src="./shade.png"/>
+                    <text class="text">{{item[4].name}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="refresh-block" wx:if="{{state.loadingMore}}">
+            加载中……
+        </view>
+        <view wx:if="{{state.scrollTop>0}}" class="top" bindtap="toTop">
+            <image class="top-img" src="/assets/top.png"/>
+        </view>
+    </scroll-view>  

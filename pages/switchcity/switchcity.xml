@@ -1,0 +1,21 @@
+<view class="searchLetter touchClass" wx:if="{{state.scrollTop>0}}">
+    <view wx:for="{{state.searchLetter}}" style="color:#333;font-size:24rpx;" bindscroll="scroll" wx:key="index" data-letter="{{item.name}}" catchtouchend="clickLetter">{{item.name}}</view>
+</view>
+<scroll-view scroll-y="true" style="height:{{state.winHeight}}px" scroll-into-view="{{state.scrollTopId}}" scroll-top="{{state.scrollTop}}" bindscroll="scroll">
+    <view class="thisCityName" data-city="{{state.city}}" data-id="{{state.cityId}}"  bindtap="bindCity">GPS定位:{{state.city}}</view>
+    <view>
+        <view class="hotcity">热门城市</view>
+        <view class="weui-grids">
+            <block wx:for-items="{{state.hotcityList}}" wx:key="{{index}}">
+                <view class="weui-grid" data-cityCode="{{item.cityCode}}" data-city="{{item.city}}" data-id="{{item.id}}" bindtap="bindHotCity">
+                    <view class="weui-grid__label">{{item.city}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="separate selection"></view>
+    <view class="selection" wx:for="{{state.cityList}}" wx:key="{{item.initial}}">
+        <view class="item_letter" id="{{item.initial}}">{{item.initial}}</view>
+        <view class="item_city" wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="{{ct.id}}" data-cityCode="{{ct.code}}" data-city="{{ct.city}}" data-id="{{ct.id}}" bindtap="bindCity">      {{ct.city}}    </view>
+    </view>
+</scroll-view>

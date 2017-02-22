@@ -1,0 +1,141 @@
+<view wx:if ="{{state.cityStoryList[0]===undefined}}" style="height:{{state.height}}px">
+    <image class="jiazai" src="/assets/loading.gif"></image>
+</view>
+<view wx:else>
+    <scroll-view scroll-y="true" style="height:{{state.height}}px;width:100%;">
+        <view>
+            <view class="weather">温度{{state.weather}}℃</view>
+            <view>
+                <view class="zhongshu">
+                    <view class="num" bindtap="toScenicList">{{state.cityScenicNum}}</view>
+                    <view class="num-name" bindtap="toScenicList">去哪儿</view>
+                </view>
+                <view class="zhongshu">
+                    <view class="num" bindtap="toStoryList">{{state.cityStoryNum}}</view>
+                    <view class="num-name" bindtap="toStoryList">听故事</view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="separate"></view>
+        <view class="input" bindtap="toSearch">
+            <icon type="search" size="22"/>
+            <text style="margin-left: 70rpx">搜搜你想听的沿途风景与故事</text>
+        </view>
+        <view>
+            <view style="display:flex;">
+                <test class="hot-scenic">热门景区</test>
+                <test class="more" wx:if='{{state.cityScenicNum>5}}' bindtap="toScenicList">更多</test>
+            </view>
+            <view wx:if='{{state.cityScenicNum===1}}' style="margin:0 10rpx;">
+                <view class="first-row margin-bottom-10">
+                    <view class="rel v1-1" data-id="{{state.cityScenicList[0].id}}" bindtap="toSceniceSpots">
+                        <image class="img1-1" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[0].image ? state.cityScenicList[0].image :  'img_default.jpg'}}@365w_345h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[0].name}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:elif="{{state.cityScenicNum===2}}" style="margin:0 8rpx;">
+                <view class="first-row margin-bottom-10">
+                    <view class="rel v1-3" data-id="{{state.cityScenicList[0].id}}" bindtap="toSceniceSpots">
+                        <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[0].image ? state.cityScenicList[0].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[0].name}}</text>
+                    </view>
+                    <view class="rel v1-3" data-id="{{state.cityScenicList[1].id}}" bindtap="toSceniceSpots">
+                        <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[1].image ?state.cityScenicList[1].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[1].name}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:elif="{{state.cityScenicNum===3}}" style="margin:0 10rpx;">
+                <view class="first-row margin-bottom-10">
+                    <view class="rel v1-3" data-id="{{state.cityScenicList[0].id}}" bindtap="toSceniceSpots">
+                        <image class="img1-3" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[0].image ? state.cityScenicList[0].image : 'img_default.jpg'}}@183w_345h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[0].name}}</text>
+                    </view>
+                    <view class="right">
+                        <view class="rel v2-3" data-id="{{state.cityScenicList[1].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1-3" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[1].image ? state.cityScenicList[1].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[1].name}}</text>
+                        </view>
+                        <view class="rel v3-3" data-id="{{state.cityScenicList[2].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r2-3" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[2].image ? state.cityScenicList[2].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[2].name}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:elif="{{state.cityScenicNum===4}}" style="margin:0 10rpx;">
+                <view class="first-row">
+                    <view>
+                        <view class="rel v2-3 margin-bottom-10" data-id="{{state.cityScenicList[0].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[0].image ? state.cityScenicList[0].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[1].name}}</text>
+                        </view>
+                        <view class="rel v3-3" data-id="{{state.cityScenicList[2].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[1].image ? state.cityScenicList[1].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[2].name}}</text>
+                        </view>
+                    </view>
+                    <view>
+                        <view class="rel v2-3  margin-bottom-10" data-id="{{state.cityScenicList[3].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[2].image ? state.cityScenicList[2].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[3].name}}</text>
+                        </view>
+                        <view class="rel v3-3" data-id="{{state.cityScenicList[4].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1-4" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[3].image ? state.cityScenicList[2].image : 'img_default.jpg'}}@178w_170h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[4].name}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else style="margin:0 10rpx;">
+                <view class="first-row margin-bottom-10">
+                    <view class="rel v1" data-id="{{state.cityScenicList[0].id}}" bindtap="toSceniceSpots">
+                        <image class="img1" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[0].image ? state.cityScenicList[0].image : 'img_default.jpg'}}@183w_225h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[0].name}}</text>
+                    </view>
+                    <view class="right">
+                        <view class="rel v2" data-id="{{state.cityScenicList[1].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r1" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[1].image ? state.cityScenicList[1].image : 'img_default.jpg'}}@178w_110h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[1].name}}</text>
+                        </view>
+                        <view class="rel v3" data-id="{{state.cityScenicList[2].id}}" bindtap="toSceniceSpots">
+                            <image class="img-top-r2" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[2].image ? state.cityScenicList[2].image : 'img_default.jpg'}}@178w_110h_1e_1c_90q" />
+                            <image class="shade" src="./shade.png"/>
+                            <text class="text">{{state.cityScenicList[2].name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="second-row">
+                    <view class="rel v4" data-id="{{state.cityScenicList[3].id}}" bindtap="toSceniceSpots">
+                        <image class="img-bot-l" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[3].image ? state.cityScenicList[3].image : 'img_default.jpg'}}@235w_115h_1e_1c_90q" />
+                        <image class="shade shade-width" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[3].name}}</text>
+                    </view>
+                    <view class="rel v5" data-id="{{state.cityScenicList[4].id}}" bindtap="toSceniceSpots">
+                        <image class="img-bot-r" src="https://image-cdn.fishsaying.com/{{state.cityScenicList[4].image ? state.cityScenicList[4].image : 'img_default.jpg'}}@125w_115h_1e_1c_90q" />
+                        <image class="shade" src="./shade.png"/>
+                        <text class="text">{{state.cityScenicList[4].name}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view wx:if="{{state.play===1}}" class="play" data-id="{{state.playId}}" bindtap="toStory">
+            <image class="play-img" src="{{state.playImg}}@55w_55h_1e_1c_90q"/>
+            <view class="layer"></view>
+            <image class="play-img1" src="/assets/wave.png"/>
+        </view>
+    </view>
